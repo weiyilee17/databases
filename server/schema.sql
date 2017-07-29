@@ -2,31 +2,35 @@ CREATE DATABASE chat;
 
 USE chat;
 
-CREATE TABLE messages(
-  /* Describe your table here.*/
-  id integer auto_increment primary key,
-  content text not null,
-  user_id integer,
-  room_id integer,
-  foreign key(user_id) references users(id),
-  foreign key(room_id) references rooms(id)
-);
-
 CREATE TABLE users(
   /* Describe your table here.*/
-  id integer,
-  username text not null
+  id integer NOT NULL PRIMARY KEY,
+  username text NOT NULL
 );
 
 CREATE TABLE rooms(
   /* Describe your table here.*/
-  id integer,
-  roomname text not null
+  id integer NOT NULL PRIMARY KEY,
+  roomname text NOT NULL
 );
 
-INSERT INTO users VALUES(0, 'becca');
-INSERT INTO rooms VALUES(0, 'hackreactor');
-INSERT INTO messages VALUES(0, 'ready for bed!',  0, 0);
+CREATE TABLE messages(
+  /* Describe your table here.*/
+  id integer AUTO_INCREMENT PRIMARY KEY,
+  content text NOT NULL,
+  userId integer NOT NULL,
+  roomId integer NOT NULL,
+  FOREIGN KEY(userId) REFERENCES `users`(id),
+  FOREIGN KEY(roomId) REFERENCES `rooms`(id)
+);
+
+
+INSERT INTO users VALUES(1, 'becca');
+INSERT INTO users VALUES(2, 'lee');
+INSERT INTO rooms VALUES(1, 'hackreactor');
+INSERT INTO rooms VALUES(2, 'bedroom');
+INSERT INTO messages VALUES(0, 'ready for bed!', 1 , 2);
+INSERT INTO messages VALUES(0, 'good morning!',  2, 1);
 
 /* Create other tables and define schemas for them here! */
 

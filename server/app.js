@@ -1,6 +1,8 @@
 var express = require('express');
 var db = require('./db');
+
 var models = require('./models');
+var controllers = require('./controllers');
 
 // Middleware
 var morgan = require('morgan');
@@ -34,3 +36,4 @@ if (!module.parent) {
 
 
 models.messages.get();
+controllers.messages.post();
