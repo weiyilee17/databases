@@ -2,15 +2,16 @@ CREATE DATABASE chat;
 
 USE chat;
 
+
 CREATE TABLE users(
   /* Describe your table here.*/
-  id integer NOT NULL PRIMARY KEY,
+  id integer AUTO_INCREMENT PRIMARY KEY,
   username text NOT NULL
 );
 
 CREATE TABLE rooms(
   /* Describe your table here.*/
-  id integer NOT NULL PRIMARY KEY,
+  id integer AUTO_INCREMENT PRIMARY KEY,
   roomname text NOT NULL
 );
 
@@ -20,8 +21,8 @@ CREATE TABLE messages(
   content text NOT NULL,
   userId integer NOT NULL,
   roomId integer NOT NULL,
-  FOREIGN KEY(userId) REFERENCES `users`(id),
-  FOREIGN KEY(roomId) REFERENCES `rooms`(id)
+  FOREIGN KEY(userId) REFERENCES `users`(id) ON DELETE CASCADE,
+  FOREIGN KEY(roomId) REFERENCES `rooms`(id) ON DELETE CASCADE
 );
 
 

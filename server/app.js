@@ -1,5 +1,6 @@
 var express = require('express');
 var db = require('./db');
+// Aha! just by requiring the index.js, it starts the mysql database connection automatically. 
 
 var models = require('./models');
 var controllers = require('./controllers');
@@ -35,5 +36,5 @@ if (!module.parent) {
 }
 
 
-models.messages.get();
-controllers.messages.post();
+// models.messages.get();
+// controllers.messages.get();
